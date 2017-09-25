@@ -16,13 +16,13 @@ $ cd Region1/
 $ mkdir chromat_dir edit_dir phd_dir
 ```
 
-2.  Move all of the chromatogram (.ab1) files into the `chromat_dir`.
+2.  Move all of the chromatogram (`.ab1`) files into the `chromat_dir`.
 
 ```bash
 $ mv *.ab1 Region1/chromat_dir/
 ```
 
-3.  Create a target file in .fasta format, convert to .phd format, and
+3.  Create a target file in `.fasta` format, convert to `.phd` format, and
 move it into the `phd_dir`:
 
 ```bash
@@ -58,7 +58,7 @@ everything to the left to **X**:
 
 `Misc -> Change X's to the Left in all reads`
 
-5.  At the other end, change all X's to the right side at the point
+5.  At the other end, change all bases to X's to the right side at the point
 where all sequences start to look bad (usually around 600 bp).
 
 6.  Go to `Dim -> Dim Nothing` so that it is easier to see and edit
@@ -71,7 +71,7 @@ all possible mismatches.
 
 8.  To merge contigs, first open the assembly view for EACH contig.
     Then, put the cursor on the position where you know they should
-    align.  Hit `Compare Contig` button in the open window of the
+    align.  Hit the `Compare Contig` button in the open window of the
     first set of contigs.  Then hit the same button in the other
     contig window.  Hit `Align`, and if they are aligned okay, hit
     `Join Contig`.  Save the assembly again, and re-scroll through to
@@ -97,25 +97,24 @@ $ cd edit_dir
 $ phredPhrap
 ```
 
-2.  Now, make another new folder to hold the merged .ace files, and
+2.  Now, make another new folder to hold the merged `.ace` files, and
     copy ALL alignments into it with the `mergeAces.perl` command
     (this includes the newly made Gene_Target alignment:
 
 ```bash
-$ perl consed-29.0/bin/mergeAces.perl --makedir Final_Align/ --copy
-Region1/ Region2/ Region3/ Gene_Target/
+$ perl consed-29.0/bin/mergeAces.perl --makedir Final_Align/ --copy Region1/ Region2/ Region3/ Gene_Target/
 ```
 
 3.  The above command will create one .ace file using the most
-    recently saved .ace files from each alignment.  You need to open
-    this .ace file in Consed and potentially join the contigs if they
+    recently saved `.ace` files from each alignment.  You need to open
+    this `.ace` file in Consed and potentially join the contigs if they
     did not completely merge together (the same way as described above
     for joining contigs in a single region alignment).
 
 
 ### Call SNPs from Final Ace FIle
 There are 3 perl scripts included here to help with SNP calling from
-an .ace alignment.  You need to run all 3 of them in the following
+an `.ace` alignment.  You need to run all 3 of them in the following
 order:
 
 1.  `ace2paddedFasta.pl`
@@ -124,8 +123,8 @@ order:
 ace2paddedFasta.pl <input.ace> <output.fasta>
 ```
 
-Run the above script on your final merged .ace file, and give the name
-of the output file in .fasta format that you want it to make.
+Run the above script on your final merged `.ace` file, and give the name
+of the output file in `.fasta` format that you want it to make.
 
 2.  `mergeReads_fasta.pl`
 
@@ -134,14 +133,14 @@ mergeReads_fasta.pl <input.padded.fasta> <output.merged.fasta>
 ```
 
 Give the file created by step 1 as input, and the second argument is
-the name of the new .fasta to create.
+the name of the new `.fasta` to create.
 
 This script merges reads from the same individual (forward and
 reverse, and overlapping parts of different regions).  It will check
 that the basecalls for the same individual all agree, and will return
 an error with a list of mismatches if they do not.
 
-You may have to manually edit the .ace file in consed again to fix any
+You may have to manually edit the `.ace` file in consed again to fix any
 erroneous basecalls.
 
 3.  `SNPsfromFasta.pl`
